@@ -11,18 +11,33 @@ import {
 import 'tailwindcss/tailwind.css'
 
 const PalindromeChecker: React.FC = () => {
+  // utilizo el hook useState para manejar el estado del input y del dialogo
   const [input, setInput] = useState(``)
   const [alert, setAlert] = useState({ open: false, text: `` })
 
+  // Aqui se valida que el input solo acepte numeros y que no sea mayor a 5 digitos
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
+    // si no es un numero o es mayor a 5 digitos no lo paso al estado
+    //
+    // /^\d*$/ es una expresion regular que valida que el string solo contenga numeros
     if (value.length <= 5 && /^\d*$/.test(value)) {
+      // si todo OK lo paso al estado
       setInput(value)
     }
   }
 
   const handleButtonClick = (event: MouseEvent) => {
+    // uso de preventDefault
     event.preventDefault()
+
+
+
+    // Aqui se valida si el input es un palindromo
+    // split separa el string en un array
+    // reverse invierte el orden del array
+    // join une el array en un string nuevamente
+    // y se compara con el input original
     const reversedInput = input.split(``).reverse().join(``)
     if (input === reversedInput) {
       setAlert({ open: true, text: `El número es un palíndromo.` })
@@ -31,6 +46,7 @@ const PalindromeChecker: React.FC = () => {
     }
   }
 
+  // para cerrar el dialogo
   const handleCloseAlert = () => {
     setAlert({ open: false, text: `` })
   }
