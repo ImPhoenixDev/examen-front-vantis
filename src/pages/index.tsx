@@ -38,6 +38,7 @@ const PalindromeChecker: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="p-8 border border-gray-300 rounded-lg flex flex-col items-center justify-center">
+        <h1 className="my-4 text-blue-500">Verificador de Número palíndromo</h1>
         <TextField
           className="mb-4"
           label="Número"
@@ -46,13 +47,15 @@ const PalindromeChecker: React.FC = () => {
           onChange={handleInputChange}
           inputProps={{ inputMode: `numeric`, maxLength: 5 }}
         />
-        <Button
-          variant="contained"
-          onClick={handleButtonClick}
-          className="!m4 !bg-blue-500"
-        >
-          Verificar Palíndromo
-        </Button>
+        <div className="my-4">
+            <Button
+              variant="contained"
+              onClick={handleButtonClick}
+              className="!bg-blue-500"
+            >
+              Verificar Palíndromo
+            </Button>
+        </div>
 
         <Dialog open={alert.open} onClose={handleCloseAlert}>
           <DialogTitle>{`Resultado`}</DialogTitle>
